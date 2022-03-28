@@ -1,0 +1,87 @@
+<html>
+
+<head>
+  <title>JavaScript Dijital Saat</title>
+  <link href="https://fonts.googleapis.com/css?family=Sofia" rel="stylesheet" type="text/css" />
+  <style>
+    .tabBlok {
+      border-radius: 5px;
+      -moz-border-radius: 5px;
+      -webkit-border-radius: 5px;
+      max-width: 200px;
+      width: 100%;
+      overflow: hidden;
+      display: block;
+    }
+
+    .digitalClockDesign {
+      vertical-align: middle;
+      font-family: Sofia;
+      font-size: 40px;
+      font-weight: normal;
+      padding: 0 10px;
+    }
+
+    .hourDesign {
+      vertical-align: middle;
+      font-family: Sofia;
+      font-size: 20px;
+      font-weight: normal;
+    }
+
+    .floorDesign {
+      max-width: 220px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 20px;
+    }
+  </style>
+</head>
+
+<body id="flipper" , onload="digitalClock();">
+  <div class="floorDesign">
+
+    <table class="tabBlok" align="center" cellspacing="0" cellpadding="0" border="0">
+      <tr>
+        <td class="digitalClockDesign" id="dt"></td>
+        <td>
+          <table cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td class="hourDesign" id="dt_second"></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </div>
+</body>
+
+<script>
+  setInterval(digitalClock, 1000);
+
+  function digitalClock() {
+    var dt = new Date();
+    var hour = dt.getHours();
+    var minute = dt.getMinutes();
+    var second = dt.getSeconds();
+
+    minute = Tik(minute);
+    second = Tik(second);
+
+    document.getElementById('dt').innerHTML = hour + ":" + minute;
+    document.getElementById('dt_second').innerHTML = second;
+
+    const color = '#' + Math.random().toString(16).substring(9);
+    document.getElementById('flipper').style.backgroundColor = color;
+  }
+
+  function Tik(tikDegeri) {
+    if (tikDegeri < 10) {
+      tikDegeri = "0" + tikDegeri;
+    }
+    return tikDegeri;
+  }
+
+</script>
+
+</html>

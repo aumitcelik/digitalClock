@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dijital Saat</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .digitalClockDesign {
+      font-size: 100px;
+    }
+  </style>
+</head>
+<body onload="digitalClock();">
+  <div class="digitalClockDesign" id="dt"></div>
+
+  <script>
+    setInterval(digitalClock, 1000);
+
+    function digitalClock() {
+      var dt = new Date();
+      var hour = dt.getHours();
+      var minute = dt.getMinutes();
+      var second = dt.getSeconds();
+
+      minute = Tik(minute);
+      second = Tik(second);
+
+      document.getElementById('dt').innerHTML = hour + ":" + minute + ":" + second;
+
+      const color = '#' + Math.random().toString(16).substring(9);
+      document.body.style.backgroundColor = color;
+    }
+
+    function Tik(tikDegeri) {
+      if (tikDegeri < 10) {
+        tikDegeri = "0" + tikDegeri;
+      }
+      return tikDegeri;
+    }
+  </script>
+</body>
+</html>
